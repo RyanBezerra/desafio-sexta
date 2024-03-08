@@ -14,11 +14,11 @@ export default function Home() {
     console.log(data)
   }
 
-  const onBlur = () => {
+  const handleBlur = () => {
     fetch(`https://viacep.com.br/ws/${getValues('cep')}/json/`)
     .then(response => response.json())
     .then((data) => {
-      setValue('rua', data.lagradouro)
+      setValue('rua', data.logradouro)
       setValue('bairro', data.bairro)
       setValue('cidade', data.localidade)
       setValue('estado', data.uf)
@@ -38,6 +38,7 @@ export default function Home() {
           error={errors.cep}
           schema="cep"
           type="text"
+          onBlur={handleBlur}
         />
         <Input
           id="rua"
