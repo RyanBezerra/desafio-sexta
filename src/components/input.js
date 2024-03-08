@@ -1,4 +1,4 @@
-export default function Input({id,label , type}){
+export default function Input({id,label , type, register, error, onBlur}){
     return(
 
         <div className="flex flex-col">
@@ -10,7 +10,10 @@ export default function Input({id,label , type}){
             type={type} 
             id={id} 
             className="border border-gray-300 rounded-md p-2"
+            {...register(id)}
+            onBlur={onBlur}
             />
+            {error && <p className="text-red-700 font-bold">{error.message}</p>}
 
         </div>
     )
