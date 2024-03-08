@@ -9,10 +9,15 @@ export default function Home() {
   const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm({
     resolver: zodResolver(cepSchema),
   })
+
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-black">
         <h1 className="text-3xl text-white font-bold">Formulário de Endereço</h1>
-        <form className="flex flex-col py-4 w-1/3 space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col py-4 w-1/3 space-y-4">
 
         <Input
           id="cep"
