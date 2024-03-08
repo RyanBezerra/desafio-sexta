@@ -1,12 +1,17 @@
-import React from "react";
-
-export default function Input({id, Label, type}){
+export default function Input({id,label , type}){
     return(
 
-        <div className="">
-            <label htmlFor={id}>{Label}</label>
-            <input type={type} id={id}></input>
-        </div>
+        <div className="flex flex-col">
 
+            <label htmlFor={id} className="text-white font-bold">
+                {label}
+            </label>
+            <input 
+            type={type} 
+            id={id} 
+            className="border border-gray-300 rounded-md p-2"
+            />
+
+        </div>
     )
 }
