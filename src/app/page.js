@@ -13,6 +13,18 @@ export default function Home() {
   const onSubmit = (data) => {
     console.log(data)
   }
+
+  const onBlur = () => {
+    fetch(`https://viacep.com.br/ws/${getValues('cep')}/json/`)
+    .then(response => response.json())
+    .then((data) => {
+      setValue('rua', data.lagradouro)
+      setValue('bairro', data.bairro)
+      setValue('cidade', data.localidade)
+      setValue('estado', data.uf)
+    })
+    .catch((error) => console.error(error))
+  }
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-black">
